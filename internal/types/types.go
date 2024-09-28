@@ -140,6 +140,16 @@ type UploadResp struct {
 	Data UploadInfo `json:"data"`
 }
 
+// swagger:model UploadReq
+type UploadReq struct {
+	// 创建人id
+	CreateId *string `json:"createId"`
+	// 部门id
+	DepartmentID *string `json:"departmentID"`
+	// 分类id
+	CategoryID *int64 `json:"categoryID"`
+}
+
 // Update file information params | 更新文件信息参数
 // swagger:model UpdateFileReq
 type UpdateFileReq struct {

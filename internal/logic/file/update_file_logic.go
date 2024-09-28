@@ -2,11 +2,8 @@ package file
 
 import (
 	"context"
-
-	"github.com/suyuan32/simple-admin-common/utils/uuidx"
-
 	"github.com/suyuan32/simple-admin-common/i18n"
-
+	"github.com/suyuan32/simple-admin-common/utils/uuidx"
 	"github.com/suyuan32/simple-admin-file/internal/utils/dberrorhandler"
 
 	"github.com/suyuan32/simple-admin-file/internal/svc"
@@ -19,15 +16,13 @@ type UpdateFileLogic struct {
 	logx.Logger
 	ctx    context.Context
 	svcCtx *svc.ServiceContext
-	lang   string
 }
 
 func NewUpdateFileLogic(ctx context.Context, svcCtx *svc.ServiceContext) *UpdateFileLogic {
 	return &UpdateFileLogic{
 		Logger: logx.WithContext(ctx),
 		ctx:    ctx,
-		svcCtx: svcCtx,
-	}
+		svcCtx: svcCtx}
 }
 
 func (l *UpdateFileLogic) UpdateFile(req *types.UpdateFileReq) (resp *types.BaseMsgResp, err error) {

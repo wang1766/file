@@ -16,7 +16,7 @@
     "contact": {
       "email": "yuansu.china.work@gmail.com"
     },
-    "version": "1.5.4"
+    "version": "1.5.6"
   },
   "host": "localhost:9102",
   "basePath": "/",
@@ -761,6 +761,16 @@
         ],
         "summary": "Upload file | 上传文件",
         "operationId": "Upload",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/UploadReq"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "UploadResp",
@@ -1906,6 +1916,28 @@
           "description": "File path | 文件路径",
           "type": "string",
           "x-go-name": "Url"
+        }
+      },
+      "x-go-package": "github.com/suyuan32/simple-admin-file/internal/types"
+    },
+    "UploadReq": {
+      "type": "object",
+      "properties": {
+        "categoryID": {
+          "description": "分类id",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "CategoryID"
+        },
+        "createId": {
+          "description": "创建人id",
+          "type": "string",
+          "x-go-name": "CreateId"
+        },
+        "departmentID": {
+          "description": "部门id",
+          "type": "string",
+          "x-go-name": "DepartmentID"
         }
       },
       "x-go-package": "github.com/suyuan32/simple-admin-file/internal/types"
