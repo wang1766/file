@@ -76,6 +76,9 @@ var (
 		{Name: "created_at", Type: field.TypeTime, Comment: "Create Time | 创建日期"},
 		{Name: "updated_at", Type: field.TypeTime, Comment: "Update Time | 修改日期"},
 		{Name: "status", Type: field.TypeUint8, Nullable: true, Comment: "Status 1: normal 2: ban | 状态 1 正常 2 禁用", Default: 1},
+		{Name: "create_id", Type: field.TypeString, Comment: "创建人id"},
+		{Name: "department_id", Type: field.TypeString, Comment: "部门id"},
+		{Name: "category_id", Type: field.TypeInt, Comment: "分类id"},
 		{Name: "name", Type: field.TypeString, Comment: "File's name | 文件名称"},
 		{Name: "file_type", Type: field.TypeUint8, Comment: "File's type | 文件类型"},
 		{Name: "size", Type: field.TypeUint64, Comment: "File's size | 文件大小"},
@@ -92,12 +95,12 @@ var (
 			{
 				Name:    "file_user_id",
 				Unique:  false,
-				Columns: []*schema.Column{FmsFilesColumns[8]},
+				Columns: []*schema.Column{FmsFilesColumns[11]},
 			},
 			{
 				Name:    "file_file_type",
 				Unique:  false,
-				Columns: []*schema.Column{FmsFilesColumns[5]},
+				Columns: []*schema.Column{FmsFilesColumns[8]},
 			},
 		},
 	}

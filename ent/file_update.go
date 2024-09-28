@@ -62,6 +62,55 @@ func (fu *FileUpdate) ClearStatus() *FileUpdate {
 	return fu
 }
 
+// SetCreateId sets the "createId" field.
+func (fu *FileUpdate) SetCreateId(s string) *FileUpdate {
+	fu.mutation.SetCreateId(s)
+	return fu
+}
+
+// SetNillableCreateId sets the "createId" field if the given value is not nil.
+func (fu *FileUpdate) SetNillableCreateId(s *string) *FileUpdate {
+	if s != nil {
+		fu.SetCreateId(*s)
+	}
+	return fu
+}
+
+// SetDepartmentId sets the "departmentId" field.
+func (fu *FileUpdate) SetDepartmentId(s string) *FileUpdate {
+	fu.mutation.SetDepartmentId(s)
+	return fu
+}
+
+// SetNillableDepartmentId sets the "departmentId" field if the given value is not nil.
+func (fu *FileUpdate) SetNillableDepartmentId(s *string) *FileUpdate {
+	if s != nil {
+		fu.SetDepartmentId(*s)
+	}
+	return fu
+}
+
+// SetCategoryID sets the "category_id" field.
+func (fu *FileUpdate) SetCategoryID(i int) *FileUpdate {
+	fu.mutation.ResetCategoryID()
+	fu.mutation.SetCategoryID(i)
+	return fu
+}
+
+// SetNillableCategoryID sets the "category_id" field if the given value is not nil.
+func (fu *FileUpdate) SetNillableCategoryID(i *int) *FileUpdate {
+	if i != nil {
+		fu.SetCategoryID(*i)
+	}
+	return fu
+}
+
+// AddCategoryID adds i to the "category_id" field.
+func (fu *FileUpdate) AddCategoryID(i int) *FileUpdate {
+	fu.mutation.AddCategoryID(i)
+	return fu
+}
+
 // SetName sets the "name" field.
 func (fu *FileUpdate) SetName(s string) *FileUpdate {
 	fu.mutation.SetName(s)
@@ -258,6 +307,18 @@ func (fu *FileUpdate) sqlSave(ctx context.Context) (n int, err error) {
 	if fu.mutation.StatusCleared() {
 		_spec.ClearField(file.FieldStatus, field.TypeUint8)
 	}
+	if value, ok := fu.mutation.CreateId(); ok {
+		_spec.SetField(file.FieldCreateId, field.TypeString, value)
+	}
+	if value, ok := fu.mutation.DepartmentId(); ok {
+		_spec.SetField(file.FieldDepartmentId, field.TypeString, value)
+	}
+	if value, ok := fu.mutation.CategoryID(); ok {
+		_spec.SetField(file.FieldCategoryID, field.TypeInt, value)
+	}
+	if value, ok := fu.mutation.AddedCategoryID(); ok {
+		_spec.AddField(file.FieldCategoryID, field.TypeInt, value)
+	}
 	if value, ok := fu.mutation.Name(); ok {
 		_spec.SetField(file.FieldName, field.TypeString, value)
 	}
@@ -377,6 +438,55 @@ func (fuo *FileUpdateOne) AddStatus(u int8) *FileUpdateOne {
 // ClearStatus clears the value of the "status" field.
 func (fuo *FileUpdateOne) ClearStatus() *FileUpdateOne {
 	fuo.mutation.ClearStatus()
+	return fuo
+}
+
+// SetCreateId sets the "createId" field.
+func (fuo *FileUpdateOne) SetCreateId(s string) *FileUpdateOne {
+	fuo.mutation.SetCreateId(s)
+	return fuo
+}
+
+// SetNillableCreateId sets the "createId" field if the given value is not nil.
+func (fuo *FileUpdateOne) SetNillableCreateId(s *string) *FileUpdateOne {
+	if s != nil {
+		fuo.SetCreateId(*s)
+	}
+	return fuo
+}
+
+// SetDepartmentId sets the "departmentId" field.
+func (fuo *FileUpdateOne) SetDepartmentId(s string) *FileUpdateOne {
+	fuo.mutation.SetDepartmentId(s)
+	return fuo
+}
+
+// SetNillableDepartmentId sets the "departmentId" field if the given value is not nil.
+func (fuo *FileUpdateOne) SetNillableDepartmentId(s *string) *FileUpdateOne {
+	if s != nil {
+		fuo.SetDepartmentId(*s)
+	}
+	return fuo
+}
+
+// SetCategoryID sets the "category_id" field.
+func (fuo *FileUpdateOne) SetCategoryID(i int) *FileUpdateOne {
+	fuo.mutation.ResetCategoryID()
+	fuo.mutation.SetCategoryID(i)
+	return fuo
+}
+
+// SetNillableCategoryID sets the "category_id" field if the given value is not nil.
+func (fuo *FileUpdateOne) SetNillableCategoryID(i *int) *FileUpdateOne {
+	if i != nil {
+		fuo.SetCategoryID(*i)
+	}
+	return fuo
+}
+
+// AddCategoryID adds i to the "category_id" field.
+func (fuo *FileUpdateOne) AddCategoryID(i int) *FileUpdateOne {
+	fuo.mutation.AddCategoryID(i)
 	return fuo
 }
 
@@ -605,6 +715,18 @@ func (fuo *FileUpdateOne) sqlSave(ctx context.Context) (_node *File, err error) 
 	}
 	if fuo.mutation.StatusCleared() {
 		_spec.ClearField(file.FieldStatus, field.TypeUint8)
+	}
+	if value, ok := fuo.mutation.CreateId(); ok {
+		_spec.SetField(file.FieldCreateId, field.TypeString, value)
+	}
+	if value, ok := fuo.mutation.DepartmentId(); ok {
+		_spec.SetField(file.FieldDepartmentId, field.TypeString, value)
+	}
+	if value, ok := fuo.mutation.CategoryID(); ok {
+		_spec.SetField(file.FieldCategoryID, field.TypeInt, value)
+	}
+	if value, ok := fuo.mutation.AddedCategoryID(); ok {
+		_spec.AddField(file.FieldCategoryID, field.TypeInt, value)
 	}
 	if value, ok := fuo.mutation.Name(); ok {
 		_spec.SetField(file.FieldName, field.TypeString, value)

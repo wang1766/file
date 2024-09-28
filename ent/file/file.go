@@ -21,6 +21,12 @@ const (
 	FieldUpdatedAt = "updated_at"
 	// FieldStatus holds the string denoting the status field in the database.
 	FieldStatus = "status"
+	// FieldCreateId holds the string denoting the createid field in the database.
+	FieldCreateId = "create_id"
+	// FieldDepartmentId holds the string denoting the departmentid field in the database.
+	FieldDepartmentId = "department_id"
+	// FieldCategoryID holds the string denoting the category_id field in the database.
+	FieldCategoryID = "category_id"
 	// FieldName holds the string denoting the name field in the database.
 	FieldName = "name"
 	// FieldFileType holds the string denoting the file_type field in the database.
@@ -50,6 +56,9 @@ var Columns = []string{
 	FieldCreatedAt,
 	FieldUpdatedAt,
 	FieldStatus,
+	FieldCreateId,
+	FieldDepartmentId,
+	FieldCategoryID,
 	FieldName,
 	FieldFileType,
 	FieldSize,
@@ -108,6 +117,21 @@ func ByUpdatedAt(opts ...sql.OrderTermOption) OrderOption {
 // ByStatus orders the results by the status field.
 func ByStatus(opts ...sql.OrderTermOption) OrderOption {
 	return sql.OrderByField(FieldStatus, opts...).ToFunc()
+}
+
+// ByCreateId orders the results by the createId field.
+func ByCreateId(opts ...sql.OrderTermOption) OrderOption {
+	return sql.OrderByField(FieldCreateId, opts...).ToFunc()
+}
+
+// ByDepartmentId orders the results by the departmentId field.
+func ByDepartmentId(opts ...sql.OrderTermOption) OrderOption {
+	return sql.OrderByField(FieldDepartmentId, opts...).ToFunc()
+}
+
+// ByCategoryID orders the results by the category_id field.
+func ByCategoryID(opts ...sql.OrderTermOption) OrderOption {
+	return sql.OrderByField(FieldCategoryID, opts...).ToFunc()
 }
 
 // ByName orders the results by the name field.

@@ -1711,28 +1711,32 @@ func (m *CloudFileTagMutation) ResetEdge(name string) error {
 // FileMutation represents an operation that mutates the File nodes in the graph.
 type FileMutation struct {
 	config
-	op            Op
-	typ           string
-	id            *uuid.UUID
-	created_at    *time.Time
-	updated_at    *time.Time
-	status        *uint8
-	addstatus     *int8
-	name          *string
-	file_type     *uint8
-	addfile_type  *int8
-	size          *uint64
-	addsize       *int64
-	_path         *string
-	user_id       *string
-	md5           *string
-	clearedFields map[string]struct{}
-	tags          map[uint64]struct{}
-	removedtags   map[uint64]struct{}
-	clearedtags   bool
-	done          bool
-	oldValue      func(context.Context) (*File, error)
-	predicates    []predicate.File
+	op             Op
+	typ            string
+	id             *uuid.UUID
+	created_at     *time.Time
+	updated_at     *time.Time
+	status         *uint8
+	addstatus      *int8
+	createId       *string
+	departmentId   *string
+	category_id    *int
+	addcategory_id *int
+	name           *string
+	file_type      *uint8
+	addfile_type   *int8
+	size           *uint64
+	addsize        *int64
+	_path          *string
+	user_id        *string
+	md5            *string
+	clearedFields  map[string]struct{}
+	tags           map[uint64]struct{}
+	removedtags    map[uint64]struct{}
+	clearedtags    bool
+	done           bool
+	oldValue       func(context.Context) (*File, error)
+	predicates     []predicate.File
 }
 
 var _ ent.Mutation = (*FileMutation)(nil)
@@ -1979,6 +1983,134 @@ func (m *FileMutation) ResetStatus() {
 	m.status = nil
 	m.addstatus = nil
 	delete(m.clearedFields, file.FieldStatus)
+}
+
+// SetCreateId sets the "createId" field.
+func (m *FileMutation) SetCreateId(s string) {
+	m.createId = &s
+}
+
+// CreateId returns the value of the "createId" field in the mutation.
+func (m *FileMutation) CreateId() (r string, exists bool) {
+	v := m.createId
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldCreateId returns the old "createId" field's value of the File entity.
+// If the File object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *FileMutation) OldCreateId(ctx context.Context) (v string, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldCreateId is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldCreateId requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldCreateId: %w", err)
+	}
+	return oldValue.CreateId, nil
+}
+
+// ResetCreateId resets all changes to the "createId" field.
+func (m *FileMutation) ResetCreateId() {
+	m.createId = nil
+}
+
+// SetDepartmentId sets the "departmentId" field.
+func (m *FileMutation) SetDepartmentId(s string) {
+	m.departmentId = &s
+}
+
+// DepartmentId returns the value of the "departmentId" field in the mutation.
+func (m *FileMutation) DepartmentId() (r string, exists bool) {
+	v := m.departmentId
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldDepartmentId returns the old "departmentId" field's value of the File entity.
+// If the File object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *FileMutation) OldDepartmentId(ctx context.Context) (v string, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldDepartmentId is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldDepartmentId requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldDepartmentId: %w", err)
+	}
+	return oldValue.DepartmentId, nil
+}
+
+// ResetDepartmentId resets all changes to the "departmentId" field.
+func (m *FileMutation) ResetDepartmentId() {
+	m.departmentId = nil
+}
+
+// SetCategoryID sets the "category_id" field.
+func (m *FileMutation) SetCategoryID(i int) {
+	m.category_id = &i
+	m.addcategory_id = nil
+}
+
+// CategoryID returns the value of the "category_id" field in the mutation.
+func (m *FileMutation) CategoryID() (r int, exists bool) {
+	v := m.category_id
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldCategoryID returns the old "category_id" field's value of the File entity.
+// If the File object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *FileMutation) OldCategoryID(ctx context.Context) (v int, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldCategoryID is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldCategoryID requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldCategoryID: %w", err)
+	}
+	return oldValue.CategoryID, nil
+}
+
+// AddCategoryID adds i to the "category_id" field.
+func (m *FileMutation) AddCategoryID(i int) {
+	if m.addcategory_id != nil {
+		*m.addcategory_id += i
+	} else {
+		m.addcategory_id = &i
+	}
+}
+
+// AddedCategoryID returns the value that was added to the "category_id" field in this mutation.
+func (m *FileMutation) AddedCategoryID() (r int, exists bool) {
+	v := m.addcategory_id
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// ResetCategoryID resets all changes to the "category_id" field.
+func (m *FileMutation) ResetCategoryID() {
+	m.category_id = nil
+	m.addcategory_id = nil
 }
 
 // SetName sets the "name" field.
@@ -2325,7 +2457,7 @@ func (m *FileMutation) Type() string {
 // order to get all numeric fields that were incremented/decremented, call
 // AddedFields().
 func (m *FileMutation) Fields() []string {
-	fields := make([]string, 0, 9)
+	fields := make([]string, 0, 12)
 	if m.created_at != nil {
 		fields = append(fields, file.FieldCreatedAt)
 	}
@@ -2334,6 +2466,15 @@ func (m *FileMutation) Fields() []string {
 	}
 	if m.status != nil {
 		fields = append(fields, file.FieldStatus)
+	}
+	if m.createId != nil {
+		fields = append(fields, file.FieldCreateId)
+	}
+	if m.departmentId != nil {
+		fields = append(fields, file.FieldDepartmentId)
+	}
+	if m.category_id != nil {
+		fields = append(fields, file.FieldCategoryID)
 	}
 	if m.name != nil {
 		fields = append(fields, file.FieldName)
@@ -2367,6 +2508,12 @@ func (m *FileMutation) Field(name string) (ent.Value, bool) {
 		return m.UpdatedAt()
 	case file.FieldStatus:
 		return m.Status()
+	case file.FieldCreateId:
+		return m.CreateId()
+	case file.FieldDepartmentId:
+		return m.DepartmentId()
+	case file.FieldCategoryID:
+		return m.CategoryID()
 	case file.FieldName:
 		return m.Name()
 	case file.FieldFileType:
@@ -2394,6 +2541,12 @@ func (m *FileMutation) OldField(ctx context.Context, name string) (ent.Value, er
 		return m.OldUpdatedAt(ctx)
 	case file.FieldStatus:
 		return m.OldStatus(ctx)
+	case file.FieldCreateId:
+		return m.OldCreateId(ctx)
+	case file.FieldDepartmentId:
+		return m.OldDepartmentId(ctx)
+	case file.FieldCategoryID:
+		return m.OldCategoryID(ctx)
 	case file.FieldName:
 		return m.OldName(ctx)
 	case file.FieldFileType:
@@ -2435,6 +2588,27 @@ func (m *FileMutation) SetField(name string, value ent.Value) error {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetStatus(v)
+		return nil
+	case file.FieldCreateId:
+		v, ok := value.(string)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetCreateId(v)
+		return nil
+	case file.FieldDepartmentId:
+		v, ok := value.(string)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetDepartmentId(v)
+		return nil
+	case file.FieldCategoryID:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetCategoryID(v)
 		return nil
 	case file.FieldName:
 		v, ok := value.(string)
@@ -2489,6 +2663,9 @@ func (m *FileMutation) AddedFields() []string {
 	if m.addstatus != nil {
 		fields = append(fields, file.FieldStatus)
 	}
+	if m.addcategory_id != nil {
+		fields = append(fields, file.FieldCategoryID)
+	}
 	if m.addfile_type != nil {
 		fields = append(fields, file.FieldFileType)
 	}
@@ -2505,6 +2682,8 @@ func (m *FileMutation) AddedField(name string) (ent.Value, bool) {
 	switch name {
 	case file.FieldStatus:
 		return m.AddedStatus()
+	case file.FieldCategoryID:
+		return m.AddedCategoryID()
 	case file.FieldFileType:
 		return m.AddedFileType()
 	case file.FieldSize:
@@ -2524,6 +2703,13 @@ func (m *FileMutation) AddField(name string, value ent.Value) error {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.AddStatus(v)
+		return nil
+	case file.FieldCategoryID:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.AddCategoryID(v)
 		return nil
 	case file.FieldFileType:
 		v, ok := value.(int8)
@@ -2583,6 +2769,15 @@ func (m *FileMutation) ResetField(name string) error {
 		return nil
 	case file.FieldStatus:
 		m.ResetStatus()
+		return nil
+	case file.FieldCreateId:
+		m.ResetCreateId()
+		return nil
+	case file.FieldDepartmentId:
+		m.ResetDepartmentId()
+		return nil
+	case file.FieldCategoryID:
+		m.ResetCategoryID()
 		return nil
 	case file.FieldName:
 		m.ResetName()

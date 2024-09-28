@@ -71,6 +71,21 @@ func Status(v uint8) predicate.File {
 	return predicate.File(sql.FieldEQ(FieldStatus, v))
 }
 
+// CreateId applies equality check predicate on the "createId" field. It's identical to CreateIdEQ.
+func CreateId(v string) predicate.File {
+	return predicate.File(sql.FieldEQ(FieldCreateId, v))
+}
+
+// DepartmentId applies equality check predicate on the "departmentId" field. It's identical to DepartmentIdEQ.
+func DepartmentId(v string) predicate.File {
+	return predicate.File(sql.FieldEQ(FieldDepartmentId, v))
+}
+
+// CategoryID applies equality check predicate on the "category_id" field. It's identical to CategoryIDEQ.
+func CategoryID(v int) predicate.File {
+	return predicate.File(sql.FieldEQ(FieldCategoryID, v))
+}
+
 // Name applies equality check predicate on the "name" field. It's identical to NameEQ.
 func Name(v string) predicate.File {
 	return predicate.File(sql.FieldEQ(FieldName, v))
@@ -229,6 +244,176 @@ func StatusIsNil() predicate.File {
 // StatusNotNil applies the NotNil predicate on the "status" field.
 func StatusNotNil() predicate.File {
 	return predicate.File(sql.FieldNotNull(FieldStatus))
+}
+
+// CreateIdEQ applies the EQ predicate on the "createId" field.
+func CreateIdEQ(v string) predicate.File {
+	return predicate.File(sql.FieldEQ(FieldCreateId, v))
+}
+
+// CreateIdNEQ applies the NEQ predicate on the "createId" field.
+func CreateIdNEQ(v string) predicate.File {
+	return predicate.File(sql.FieldNEQ(FieldCreateId, v))
+}
+
+// CreateIdIn applies the In predicate on the "createId" field.
+func CreateIdIn(vs ...string) predicate.File {
+	return predicate.File(sql.FieldIn(FieldCreateId, vs...))
+}
+
+// CreateIdNotIn applies the NotIn predicate on the "createId" field.
+func CreateIdNotIn(vs ...string) predicate.File {
+	return predicate.File(sql.FieldNotIn(FieldCreateId, vs...))
+}
+
+// CreateIdGT applies the GT predicate on the "createId" field.
+func CreateIdGT(v string) predicate.File {
+	return predicate.File(sql.FieldGT(FieldCreateId, v))
+}
+
+// CreateIdGTE applies the GTE predicate on the "createId" field.
+func CreateIdGTE(v string) predicate.File {
+	return predicate.File(sql.FieldGTE(FieldCreateId, v))
+}
+
+// CreateIdLT applies the LT predicate on the "createId" field.
+func CreateIdLT(v string) predicate.File {
+	return predicate.File(sql.FieldLT(FieldCreateId, v))
+}
+
+// CreateIdLTE applies the LTE predicate on the "createId" field.
+func CreateIdLTE(v string) predicate.File {
+	return predicate.File(sql.FieldLTE(FieldCreateId, v))
+}
+
+// CreateIdContains applies the Contains predicate on the "createId" field.
+func CreateIdContains(v string) predicate.File {
+	return predicate.File(sql.FieldContains(FieldCreateId, v))
+}
+
+// CreateIdHasPrefix applies the HasPrefix predicate on the "createId" field.
+func CreateIdHasPrefix(v string) predicate.File {
+	return predicate.File(sql.FieldHasPrefix(FieldCreateId, v))
+}
+
+// CreateIdHasSuffix applies the HasSuffix predicate on the "createId" field.
+func CreateIdHasSuffix(v string) predicate.File {
+	return predicate.File(sql.FieldHasSuffix(FieldCreateId, v))
+}
+
+// CreateIdEqualFold applies the EqualFold predicate on the "createId" field.
+func CreateIdEqualFold(v string) predicate.File {
+	return predicate.File(sql.FieldEqualFold(FieldCreateId, v))
+}
+
+// CreateIdContainsFold applies the ContainsFold predicate on the "createId" field.
+func CreateIdContainsFold(v string) predicate.File {
+	return predicate.File(sql.FieldContainsFold(FieldCreateId, v))
+}
+
+// DepartmentIdEQ applies the EQ predicate on the "departmentId" field.
+func DepartmentIdEQ(v string) predicate.File {
+	return predicate.File(sql.FieldEQ(FieldDepartmentId, v))
+}
+
+// DepartmentIdNEQ applies the NEQ predicate on the "departmentId" field.
+func DepartmentIdNEQ(v string) predicate.File {
+	return predicate.File(sql.FieldNEQ(FieldDepartmentId, v))
+}
+
+// DepartmentIdIn applies the In predicate on the "departmentId" field.
+func DepartmentIdIn(vs ...string) predicate.File {
+	return predicate.File(sql.FieldIn(FieldDepartmentId, vs...))
+}
+
+// DepartmentIdNotIn applies the NotIn predicate on the "departmentId" field.
+func DepartmentIdNotIn(vs ...string) predicate.File {
+	return predicate.File(sql.FieldNotIn(FieldDepartmentId, vs...))
+}
+
+// DepartmentIdGT applies the GT predicate on the "departmentId" field.
+func DepartmentIdGT(v string) predicate.File {
+	return predicate.File(sql.FieldGT(FieldDepartmentId, v))
+}
+
+// DepartmentIdGTE applies the GTE predicate on the "departmentId" field.
+func DepartmentIdGTE(v string) predicate.File {
+	return predicate.File(sql.FieldGTE(FieldDepartmentId, v))
+}
+
+// DepartmentIdLT applies the LT predicate on the "departmentId" field.
+func DepartmentIdLT(v string) predicate.File {
+	return predicate.File(sql.FieldLT(FieldDepartmentId, v))
+}
+
+// DepartmentIdLTE applies the LTE predicate on the "departmentId" field.
+func DepartmentIdLTE(v string) predicate.File {
+	return predicate.File(sql.FieldLTE(FieldDepartmentId, v))
+}
+
+// DepartmentIdContains applies the Contains predicate on the "departmentId" field.
+func DepartmentIdContains(v string) predicate.File {
+	return predicate.File(sql.FieldContains(FieldDepartmentId, v))
+}
+
+// DepartmentIdHasPrefix applies the HasPrefix predicate on the "departmentId" field.
+func DepartmentIdHasPrefix(v string) predicate.File {
+	return predicate.File(sql.FieldHasPrefix(FieldDepartmentId, v))
+}
+
+// DepartmentIdHasSuffix applies the HasSuffix predicate on the "departmentId" field.
+func DepartmentIdHasSuffix(v string) predicate.File {
+	return predicate.File(sql.FieldHasSuffix(FieldDepartmentId, v))
+}
+
+// DepartmentIdEqualFold applies the EqualFold predicate on the "departmentId" field.
+func DepartmentIdEqualFold(v string) predicate.File {
+	return predicate.File(sql.FieldEqualFold(FieldDepartmentId, v))
+}
+
+// DepartmentIdContainsFold applies the ContainsFold predicate on the "departmentId" field.
+func DepartmentIdContainsFold(v string) predicate.File {
+	return predicate.File(sql.FieldContainsFold(FieldDepartmentId, v))
+}
+
+// CategoryIDEQ applies the EQ predicate on the "category_id" field.
+func CategoryIDEQ(v int) predicate.File {
+	return predicate.File(sql.FieldEQ(FieldCategoryID, v))
+}
+
+// CategoryIDNEQ applies the NEQ predicate on the "category_id" field.
+func CategoryIDNEQ(v int) predicate.File {
+	return predicate.File(sql.FieldNEQ(FieldCategoryID, v))
+}
+
+// CategoryIDIn applies the In predicate on the "category_id" field.
+func CategoryIDIn(vs ...int) predicate.File {
+	return predicate.File(sql.FieldIn(FieldCategoryID, vs...))
+}
+
+// CategoryIDNotIn applies the NotIn predicate on the "category_id" field.
+func CategoryIDNotIn(vs ...int) predicate.File {
+	return predicate.File(sql.FieldNotIn(FieldCategoryID, vs...))
+}
+
+// CategoryIDGT applies the GT predicate on the "category_id" field.
+func CategoryIDGT(v int) predicate.File {
+	return predicate.File(sql.FieldGT(FieldCategoryID, v))
+}
+
+// CategoryIDGTE applies the GTE predicate on the "category_id" field.
+func CategoryIDGTE(v int) predicate.File {
+	return predicate.File(sql.FieldGTE(FieldCategoryID, v))
+}
+
+// CategoryIDLT applies the LT predicate on the "category_id" field.
+func CategoryIDLT(v int) predicate.File {
+	return predicate.File(sql.FieldLT(FieldCategoryID, v))
+}
+
+// CategoryIDLTE applies the LTE predicate on the "category_id" field.
+func CategoryIDLTE(v int) predicate.File {
+	return predicate.File(sql.FieldLTE(FieldCategoryID, v))
 }
 
 // NameEQ applies the EQ predicate on the "name" field.

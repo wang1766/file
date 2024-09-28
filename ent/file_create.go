@@ -64,6 +64,24 @@ func (fc *FileCreate) SetNillableStatus(u *uint8) *FileCreate {
 	return fc
 }
 
+// SetCreateId sets the "createId" field.
+func (fc *FileCreate) SetCreateId(s string) *FileCreate {
+	fc.mutation.SetCreateId(s)
+	return fc
+}
+
+// SetDepartmentId sets the "departmentId" field.
+func (fc *FileCreate) SetDepartmentId(s string) *FileCreate {
+	fc.mutation.SetDepartmentId(s)
+	return fc
+}
+
+// SetCategoryID sets the "category_id" field.
+func (fc *FileCreate) SetCategoryID(i int) *FileCreate {
+	fc.mutation.SetCategoryID(i)
+	return fc
+}
+
 // SetName sets the "name" field.
 func (fc *FileCreate) SetName(s string) *FileCreate {
 	fc.mutation.SetName(s)
@@ -190,6 +208,15 @@ func (fc *FileCreate) check() error {
 	if _, ok := fc.mutation.UpdatedAt(); !ok {
 		return &ValidationError{Name: "updated_at", err: errors.New(`ent: missing required field "File.updated_at"`)}
 	}
+	if _, ok := fc.mutation.CreateId(); !ok {
+		return &ValidationError{Name: "createId", err: errors.New(`ent: missing required field "File.createId"`)}
+	}
+	if _, ok := fc.mutation.DepartmentId(); !ok {
+		return &ValidationError{Name: "departmentId", err: errors.New(`ent: missing required field "File.departmentId"`)}
+	}
+	if _, ok := fc.mutation.CategoryID(); !ok {
+		return &ValidationError{Name: "category_id", err: errors.New(`ent: missing required field "File.category_id"`)}
+	}
 	if _, ok := fc.mutation.Name(); !ok {
 		return &ValidationError{Name: "name", err: errors.New(`ent: missing required field "File.name"`)}
 	}
@@ -254,6 +281,18 @@ func (fc *FileCreate) createSpec() (*File, *sqlgraph.CreateSpec) {
 	if value, ok := fc.mutation.Status(); ok {
 		_spec.SetField(file.FieldStatus, field.TypeUint8, value)
 		_node.Status = value
+	}
+	if value, ok := fc.mutation.CreateId(); ok {
+		_spec.SetField(file.FieldCreateId, field.TypeString, value)
+		_node.CreateId = value
+	}
+	if value, ok := fc.mutation.DepartmentId(); ok {
+		_spec.SetField(file.FieldDepartmentId, field.TypeString, value)
+		_node.DepartmentId = value
+	}
+	if value, ok := fc.mutation.CategoryID(); ok {
+		_spec.SetField(file.FieldCategoryID, field.TypeInt, value)
+		_node.CategoryID = value
 	}
 	if value, ok := fc.mutation.Name(); ok {
 		_spec.SetField(file.FieldName, field.TypeString, value)

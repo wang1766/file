@@ -25,6 +25,12 @@ type File struct {
 	UpdatedAt time.Time `json:"updated_at,omitempty"`
 	// Status 1: normal 2: ban | 状态 1 正常 2 禁用
 	Status uint8 `json:"status,omitempty"`
+	// 创建人id
+	CreateId string `json:"createId,omitempty"`
+	// 部门id
+	DepartmentId string `json:"departmentId,omitempty"`
+	// 分类id
+	CategoryID int `json:"category_id,omitempty"`
 	// File's name | 文件名称
 	Name string `json:"name,omitempty"`
 	// File's type | 文件类型
@@ -66,9 +72,9 @@ func (*File) scanValues(columns []string) ([]any, error) {
 	values := make([]any, len(columns))
 	for i := range columns {
 		switch columns[i] {
-		case file.FieldStatus, file.FieldFileType, file.FieldSize:
+		case file.FieldStatus, file.FieldCategoryID, file.FieldFileType, file.FieldSize:
 			values[i] = new(sql.NullInt64)
-		case file.FieldName, file.FieldPath, file.FieldUserID, file.FieldMd5:
+		case file.FieldCreateId, file.FieldDepartmentId, file.FieldName, file.FieldPath, file.FieldUserID, file.FieldMd5:
 			values[i] = new(sql.NullString)
 		case file.FieldCreatedAt, file.FieldUpdatedAt:
 			values[i] = new(sql.NullTime)
@@ -112,6 +118,24 @@ func (f *File) assignValues(columns []string, values []any) error {
 				return fmt.Errorf("unexpected type %T for field status", values[i])
 			} else if value.Valid {
 				f.Status = uint8(value.Int64)
+			}
+		case file.FieldCreateId:
+			if value, ok := values[i].(*sql.NullString); !ok {
+				return fmt.Errorf("unexpected type %T for field createId", values[i])
+			} else if value.Valid {
+				f.CreateId = value.String
+			}
+		case file.FieldDepartmentId:
+			if value, ok := values[i].(*sql.NullString); !ok {
+				return fmt.Errorf("unexpected type %T for field departmentId", values[i])
+			} else if value.Valid {
+				f.DepartmentId = value.String
+			}
+		case file.FieldCategoryID:
+			if value, ok := values[i].(*sql.NullInt64); !ok {
+				return fmt.Errorf("unexpected type %T for field category_id", values[i])
+			} else if value.Valid {
+				f.CategoryID = int(value.Int64)
 			}
 		case file.FieldName:
 			if value, ok := values[i].(*sql.NullString); !ok {
@@ -198,6 +222,15 @@ func (f *File) String() string {
 	builder.WriteString(", ")
 	builder.WriteString("status=")
 	builder.WriteString(fmt.Sprintf("%v", f.Status))
+	builder.WriteString(", ")
+	builder.WriteString("createId=")
+	builder.WriteString(f.CreateId)
+	builder.WriteString(", ")
+	builder.WriteString("departmentId=")
+	builder.WriteString(f.DepartmentId)
+	builder.WriteString(", ")
+	builder.WriteString("category_id=")
+	builder.WriteString(fmt.Sprintf("%v", f.CategoryID))
 	builder.WriteString(", ")
 	builder.WriteString("name=")
 	builder.WriteString(f.Name)

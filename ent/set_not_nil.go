@@ -317,6 +317,78 @@ func (f *FileCreate) SetNotNilStatus(value *uint8) *FileCreate {
 }
 
 // set field if value's pointer is not nil.
+func (f *FileUpdate) SetNotNilCreateId(value *string) *FileUpdate {
+	if value != nil {
+		return f.SetCreateId(*value)
+	}
+	return f
+}
+
+// set field if value's pointer is not nil.
+func (f *FileUpdateOne) SetNotNilCreateId(value *string) *FileUpdateOne {
+	if value != nil {
+		return f.SetCreateId(*value)
+	}
+	return f
+}
+
+// set field if value's pointer is not nil.
+func (f *FileCreate) SetNotNilCreateId(value *string) *FileCreate {
+	if value != nil {
+		return f.SetCreateId(*value)
+	}
+	return f
+}
+
+// set field if value's pointer is not nil.
+func (f *FileUpdate) SetNotNilDepartmentId(value *string) *FileUpdate {
+	if value != nil {
+		return f.SetDepartmentId(*value)
+	}
+	return f
+}
+
+// set field if value's pointer is not nil.
+func (f *FileUpdateOne) SetNotNilDepartmentId(value *string) *FileUpdateOne {
+	if value != nil {
+		return f.SetDepartmentId(*value)
+	}
+	return f
+}
+
+// set field if value's pointer is not nil.
+func (f *FileCreate) SetNotNilDepartmentId(value *string) *FileCreate {
+	if value != nil {
+		return f.SetDepartmentId(*value)
+	}
+	return f
+}
+
+// set field if value's pointer is not nil.
+func (f *FileUpdate) SetNotNilCategoryID(value *int) *FileUpdate {
+	if value != nil {
+		return f.SetCategoryID(*value)
+	}
+	return f
+}
+
+// set field if value's pointer is not nil.
+func (f *FileUpdateOne) SetNotNilCategoryID(value *int) *FileUpdateOne {
+	if value != nil {
+		return f.SetCategoryID(*value)
+	}
+	return f
+}
+
+// set field if value's pointer is not nil.
+func (f *FileCreate) SetNotNilCategoryID(value *int) *FileCreate {
+	if value != nil {
+		return f.SetCategoryID(*value)
+	}
+	return f
+}
+
+// set field if value's pointer is not nil.
 func (f *FileUpdate) SetNotNilName(value *string) *FileUpdate {
 	if value != nil {
 		return f.SetName(*value)
