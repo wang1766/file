@@ -28,6 +28,17 @@ type (
 		Data UploadInfo `json:"data"`
 	}
 
+	UploadReq {
+	        // 创建人id
+	        CreateId  *string  `json:"createId"`
+
+	        // 部门id
+	        DepartmentID  *string `json:"departmentID"`
+
+	        // 分类id
+    		CategoryID *int64  json:"categoryID"`
+    	}
+
 	// Update file information params | 更新文件信息参数
 	UpdateFileReq {
 		// ID
@@ -143,5 +154,5 @@ service Fms {
 service Fms {
 	// Upload file | 上传文件
 	@handler upload
-	post /upload returns (UploadResp)
+	post /upload (UploadReq) returns (UploadResp)
 }

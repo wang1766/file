@@ -18,6 +18,9 @@ type File struct {
 // Fields of the File.
 func (File) Fields() []ent.Field {
 	return []ent.Field{
+		field.String("createId").Comment("创建人id"),
+		field.String("departmentId").Comment("部门id"),
+		field.Int("category_id").Comment("分类id"),
 		field.String("name").
 			Comment("File's name | 文件名称"),
 		field.Uint8("file_type").
