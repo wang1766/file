@@ -1331,6 +1331,22 @@
         "pageSize"
       ],
       "properties": {
+        "categoryID": {
+          "description": "分类id",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "CategoryID"
+        },
+        "createId": {
+          "description": "创建人id",
+          "type": "string",
+          "x-go-name": "CreateId"
+        },
+        "departmentID": {
+          "description": "部门id",
+          "type": "string",
+          "x-go-name": "DepartmentID"
+        },
         "fileName": {
           "description": "File name | 文件名",
           "type": "string",

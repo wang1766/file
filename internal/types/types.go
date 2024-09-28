@@ -167,6 +167,12 @@ type UpdateFileReq struct {
 // swagger:model FileListReq
 type FileListReq struct {
 	PageInfo
+	// 创建人id
+	CreateId *string `json:"createId"`
+	// 部门id
+	DepartmentID *string `json:"departmentID"`
+	// 分类id
+	CategoryID *int64 `json:"categoryID"`
 	// File type | 文件类型
 	// max length : 10
 	FileType *uint8 `json:"fileType,optional" validate:"omitempty,max=10"`
