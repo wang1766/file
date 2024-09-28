@@ -191,6 +191,12 @@ type FileListReq struct {
 // swagger:model FileInfo
 type FileInfo struct {
 	BaseUUIDInfo
+	// 创建人id
+	CreateId *string `json:"createId"`
+	// 部门id
+	DepartmentID *string `json:"departmentID"`
+	// 分类id
+	CategoryID *int64 `json:"categoryID"`
 	// User's UUID | 用户的UUID
 	UserUUID *string `json:"userUUID"`
 	// File name | 文件名

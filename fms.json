@@ -1236,11 +1236,27 @@
       "description": "The response data of file information | 文件信息数据",
       "type": "object",
       "properties": {
+        "categoryID": {
+          "description": "分类id",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "CategoryID"
+        },
+        "createId": {
+          "description": "创建人id",
+          "type": "string",
+          "x-go-name": "CreateId"
+        },
         "createdAt": {
           "description": "Create date | 创建日期",
           "type": "integer",
           "format": "int64",
           "x-go-name": "CreatedAt"
+        },
+        "departmentID": {
+          "description": "部门id",
+          "type": "string",
+          "x-go-name": "DepartmentID"
         },
         "fileType": {
           "description": "File type | 文件类型",

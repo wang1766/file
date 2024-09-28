@@ -156,7 +156,10 @@ func (l *UploadLogic) Upload(req *types.UploadReq) (resp *types.UploadResp, err 
 		SetNotNilUserID(&userId).
 		SetNotNilMd5(pointy.GetPointer(md5)).
 		SetNotNilStatus(pointy.GetPointer(uint8(1))).
-		SetNotNilSize(pointy.GetPointer(uint64(handler.Size)))
+		SetNotNilSize(pointy.GetPointer(uint64(handler.Size))).
+		SetCreateId(*req.CreateId).
+		SetDepartmentId(*req.DepartmentID).
+		SetCategoryID(int(*req.CategoryID))
 
 	if fileTagId != 0 {
 		query = query.AddTagIDs(fileTagId)

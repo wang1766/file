@@ -2,6 +2,7 @@ package file
 
 import (
 	"context"
+	"go.uber.org/zap"
 	"time"
 
 	"github.com/suyuan32/simple-admin-common/utils/pointy"
@@ -41,6 +42,12 @@ func NewFileListLogic(ctx context.Context, svcCtx *svc.ServiceContext) *FileList
 func (l *FileListLogic) FileList(req *types.FileListReq) (resp *types.FileListResp, err error) {
 	var predicates []predicate.File
 
+	defer func() {
+		if err := recover(); err != nil {
+			l.Logger.Error("FileList panic", zap.Any("err", err))
+		}
+	}()
+
 	if req.FileType != nil && *req.FileType != 0 {
 		predicates = append(predicates, file.FileTypeEQ(*req.FileType))
 	}
@@ -55,6 +62,14 @@ func (l *FileListLogic) FileList(req *types.FileListReq) (resp *types.FileListRe
 
 	if req.Status != nil {
 		predicates = append(predicates, file.StatusEQ(*req.Status))
+	}
+
+	if req.CategoryID != nil {
+		predicates = append(predicates, file.CategoryIDEQ(int(*req.CategoryID)))
+	}
+
+	if req.DepartmentID != nil {
+		predicates = append(predicates, file.DepartmentIdEQ(*req.DepartmentID))
 	}
 
 	if req.Period != nil {
@@ -86,14 +101,17 @@ func (l *FileListLogic) FileList(req *types.FileListReq) (resp *types.FileListRe
 				CreatedAt: pointy.GetPointer(v.CreatedAt.UnixMilli()),
 				UpdatedAt: pointy.GetPointer(v.UpdatedAt.UnixMilli()),
 			},
-			UserUUID:   &v.UserID,
-			Name:       &v.Name,
-			FileType:   &v.FileType,
-			Size:       &v.Size,
-			Path:       &v.Path,
-			Status:     &v.Status,
-			FileTagIds: l.getFileTagIds(v.Edges.Tags),
-			PublicPath: pointy.GetPointer(l.svcCtx.Config.UploadConf.ServerURL + v.Path),
+			UserUUID:     &v.UserID,
+			Name:         &v.Name,
+			FileType:     &v.FileType,
+			Size:         &v.Size,
+			Path:         &v.Path,
+			Status:       &v.Status,
+			FileTagIds:   l.getFileTagIds(v.Edges.Tags),
+			PublicPath:   pointy.GetPointer(l.svcCtx.Config.UploadConf.ServerURL + v.Path),
+			CreateId:     &v.CreateId,
+			DepartmentID: &v.DepartmentId,
+			CategoryID:   pointy.GetPointer(int64(v.CategoryID)),
 		})
 	}
 
