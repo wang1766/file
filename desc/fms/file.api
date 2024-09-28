@@ -36,7 +36,7 @@ type (
 	        DepartmentID  *string `json:"departmentID"`
 
 	        // 分类id
-    		CategoryID *int64  json:"categoryID"`
+    		CategoryID *int64  `json:"categoryID"`
     	}
 
 	// Update file information params | 更新文件信息参数
