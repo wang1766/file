@@ -1,6 +1,6 @@
 module github.com/suyuan32/simple-admin-file
 
-go 1.23.0
+go 1.23.1
 
 require (
 	entgo.io/ent v0.14.1
@@ -12,7 +12,8 @@ require (
 	github.com/suyuan32/simple-admin-common v1.5.6
 	github.com/suyuan32/simple-admin-core v1.5.6
 	github.com/zeromicro/go-zero v1.7.2
-	google.golang.org/grpc v1.66.0
+	go.uber.org/zap v1.27.0
+	google.golang.org/grpc v1.66.2
 )
 
 replace github.com/zeromicro/go-zero v1.7.2 => github.com/suyuan32/simple-admin-tools v1.7.2
@@ -101,7 +102,6 @@ require (
 	go.opentelemetry.io/proto/otlp v1.3.1 // indirect
 	go.uber.org/automaxprocs v1.5.3 // indirect
 	go.uber.org/multierr v1.11.0 // indirect
-	go.uber.org/zap v1.27.0 // indirect
 	golang.org/x/crypto v0.27.0 // indirect
 	golang.org/x/mod v0.21.0 // indirect
 	golang.org/x/net v0.29.0 // indirect

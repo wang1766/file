@@ -42,6 +42,10 @@ func NewUploadLogic(r *http.Request, svcCtx *svc.ServiceContext) *UploadLogic {
 	}
 }
 
+const (
+	ImagePrefix = "头像编号"
+)
+
 func (l *UploadLogic) Upload(req *types.UploadReq) (resp *types.UploadResp, err error) {
 	err = l.r.ParseMultipartForm(l.svcCtx.Config.UploadConf.MaxVideoSize)
 	if err != nil {
