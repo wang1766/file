@@ -1,4 +1,4 @@
-module github.com/suyuan32/simple-admin-file
+module github.com/wang1766/file
 
 go 1.23.1
 
