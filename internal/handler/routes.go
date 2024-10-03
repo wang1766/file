@@ -55,6 +55,11 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 					Path:    "/file/download/:id",
 					Handler: file.DownloadFileHandler(serverCtx),
 				},
+				{
+					Method:  http.MethodPost,
+					Path:    "/file/randomImages",
+					Handler: file.GetRandomImageHandler(serverCtx),
+				},
 			}...,
 		),
 		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),

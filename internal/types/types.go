@@ -172,7 +172,7 @@ type FileListReq struct {
 	// 部门id
 	DepartmentID *string `json:"departmentID"`
 	// 分类id
-	CategoryID *int64 `json:"categoryID"`
+	CategoryID *int64 `json:"categoryID,optional"`
 	// File type | 文件类型
 	// max length : 10
 	FileType *uint8 `json:"fileType,optional" validate:"omitempty,max=10"`
@@ -229,6 +229,31 @@ type FileListInfo struct {
 	BaseListInfo
 	// The file list data | 文件信息列表数据
 	Data []FileInfo `json:"data"`
+}
+
+// swagger:model RandomImageReq
+type RandomImageReq struct {
+	// FileTags' Id | 标签 ID
+	CategoryId int64 `json:"categoryId"`
+}
+
+// swagger:model RandomImageResp
+type RandomImageResp struct {
+	BaseDataInfo
+	Data RandomImageInfo `json:"data"`
+}
+
+// swagger:model RandomImageInfo
+type RandomImageInfo struct {
+	BaseUUIDInfo
+	// User's UUID | 用户的UUID
+	UserUUID *string `json:"userUUID"`
+	// File name | 文件名
+	Name *string `json:"name"`
+	// The public URL | 公开访问的链接
+	PublicPath *string `json:"publicPath"`
+	// FileTags' Id | 标签 ID
+	FileTagIds []uint64 `json:"tagIds,optional,omitempty"`
 }
 
 // The response data of file tag information | 文件标签信息

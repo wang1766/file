@@ -26,6 +26,7 @@ import (
 //  200: UploadResp
 
 func UploadHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+
 	defer func() {
 		if err := recover(); err != nil {
 			logx.Error("UploadHandler error")

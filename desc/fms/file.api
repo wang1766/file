@@ -63,7 +63,7 @@ type (
         DepartmentID  *string `json:"departmentID"`
 
         // 分类id
-        CategoryID *int64  `json:"categoryID"`
+        CategoryID *int64  `json:"categoryID,optional"`
 
 		// File type | 文件类型
 		FileType *uint8 `json:"fileType,optional" validate:"omitempty,max=10"`
@@ -134,6 +134,33 @@ type (
 		// The file list data | 文件信息列表数据
 		Data []FileInfo `json:"data"`
 	}
+
+	RandomImageReq {
+	    // FileTags' Id | 标签 ID
+        CategoryId  int64 `json:"categoryId"`
+	}
+
+	RandomImageResp {
+	    BaseDataInfo
+
+        Data RandomImageInfo `json:"data"`
+	}
+
+	RandomImageInfo {
+	    	    BaseUUIDInfo
+
+                // User's UUID | 用户的UUID
+        		UserUUID *string `json:"userUUID"`
+
+        		// File name | 文件名
+        		Name *string `json:"name"`
+
+        		// The public URL | 公开访问的链接
+        		PublicPath *string `json:"publicPath"`
+
+        		// FileTags' Id | 标签 ID
+        		FileTagIds  []uint64 `json:"tagIds,optional,omitempty"`
+	}
 )
 
 @server(
@@ -162,6 +189,9 @@ service Fms {
 	// Download file | 下载文件
 	@handler downloadFile
 	get /file/download/:id (UUIDPathReq)
+
+	@handler getRandomImage
+    post /file/randomImages (RandomImageReq) returns (RandomImageResp)
 }
 
 @server(

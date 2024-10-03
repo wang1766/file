@@ -64,9 +64,9 @@ func (l *FileListLogic) FileList(req *types.FileListReq) (resp *types.FileListRe
 		predicates = append(predicates, file.StatusEQ(*req.Status))
 	}
 
-	//if req.CategoryID != nil {
-	//	predicates = append(predicates, file.CategoryIDEQ(int(*req.CategoryID)))
-	//}
+	if req.CategoryID != nil {
+		predicates = append(predicates, file.CategoryIDEQ(int(*req.CategoryID)))
+	}
 
 	if req.DepartmentID != nil {
 		predicates = append(predicates, file.DepartmentIdEQ(*req.DepartmentID))

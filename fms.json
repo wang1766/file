@@ -399,6 +399,14 @@
         }
       }
     },
+    "/file/randomImages": {
+      "post": {
+        "tags": [
+          "file"
+        ],
+        "operationId": "GetRandomImage"
+      }
+    },
     "/file/status": {
       "post": {
         "description": "Change file public status | 改变文件公开状态",
@@ -1656,6 +1664,88 @@
           "format": "uint64",
           "maximum": 100000,
           "x-go-name": "PageSize"
+        }
+      },
+      "x-go-package": "github.com/suyuan32/simple-admin-file/internal/types"
+    },
+    "RandomImageInfo": {
+      "type": "object",
+      "properties": {
+        "createdAt": {
+          "description": "Create date | 创建日期",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "CreatedAt"
+        },
+        "id": {
+          "description": "ID",
+          "type": "string",
+          "x-go-name": "Id"
+        },
+        "name": {
+          "description": "File name | 文件名",
+          "type": "string",
+          "x-go-name": "Name"
+        },
+        "publicPath": {
+          "description": "The public URL | 公开访问的链接",
+          "type": "string",
+          "x-go-name": "PublicPath"
+        },
+        "tagIds": {
+          "description": "FileTags' Id | 标签 ID",
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "uint64"
+          },
+          "x-go-name": "FileTagIds"
+        },
+        "updatedAt": {
+          "description": "Update date | 更新日期",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "UpdatedAt"
+        },
+        "userUUID": {
+          "description": "User's UUID | 用户的UUID",
+          "type": "string",
+          "x-go-name": "UserUUID"
+        }
+      },
+      "x-go-package": "github.com/suyuan32/simple-admin-file/internal/types"
+    },
+    "RandomImageReq": {
+      "type": "object",
+      "properties": {
+        "categoryId": {
+          "description": "FileTags' Id | 标签 ID",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "CategoryId"
+        }
+      },
+      "x-go-package": "github.com/suyuan32/simple-admin-file/internal/types"
+    },
+    "RandomImageResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "description": "Error code | 错误代码",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "Code"
+        },
+        "data": {
+          "description": "Data | 数据",
+          "type": "string",
+          "x-go-name": "Data",
+          "$ref": "#/definitions/RandomImageInfo"
+        },
+        "msg": {
+          "description": "Message | 提示信息",
+          "type": "string",
+          "x-go-name": "Msg"
         }
       },
       "x-go-package": "github.com/suyuan32/simple-admin-file/internal/types"
